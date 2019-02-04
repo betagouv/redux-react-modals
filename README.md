@@ -1,1 +1,1 @@
-# redux-react-modal
+# redux-react-modals
