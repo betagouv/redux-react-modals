@@ -7,6 +7,24 @@ Tant que les tests fonctionnels ne sont pas écrits, cette lib ne peut être con
 
 ## Basic Usage
 
+You need to add first the modals reducer in your root reducer:
+
+```javascript
+import { modals } from 'redux-react-modals'
+import { combineReducers } from 'redux'
+
+import data from './data'
+
+const rootReducer = combineReducers({
+  ...
+  modals,
+})
+
+const store = createStore(rootReducer)
+```
+
+Then the lib provides a Modal component and some redux actions, like:
+
 ```javascript
 import React, { Fragment } from 'react'
 import { Modal, showModal } from 'redux-react-modals'
