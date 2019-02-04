@@ -13,8 +13,6 @@ You need to add first the modals reducer in your root reducer:
 import { modals } from 'redux-react-modals'
 import { combineReducers } from 'redux'
 
-import data from './data'
-
 const rootReducer = combineReducers({
   ...
   modals,
