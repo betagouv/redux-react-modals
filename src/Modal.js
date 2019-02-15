@@ -26,10 +26,11 @@ export class RawModal extends Component {
     const {
       dispatch,
       isClosingOnLocationChange,
+      name,
       location: { pathname },
     } = this.props
     if (isClosingOnLocationChange && pathname !== prevProps.location.pathname) {
-      dispatch(closeModal())
+      dispatch(closeModal(name))
     }
 
     this.handleActiveChange(prevProps)
@@ -117,7 +118,7 @@ export class RawModal extends Component {
       hasCloseButton,
       isUnclosable,
       maskColor,
-      $modal,
+      contentElement,
       transitionDuration,
     } = this.props
     const { display } = this.state
@@ -150,20 +151,25 @@ export class RawModal extends Component {
                 onClick={this.onCloseClick}
                 type="button"
               >
-                <img alt={svg} src={closeImgPath} {...imgProps} />
+                <img alt='modal close' src={closeImgPath} />
               </button>
             )}
-          {$modal &&
-            $modal.type && <div className="modal-content">{$modal}</div>}
+          {contentElement &&
+            contentElement.type && (
+              <div className="modal-content">
+                {contentElement}
+              </div>
+            )
+          }
         </div>
       </div>
     )
   }
 }
 
-Modal.defaultProps = {
+RawModal.defaultProps = {
   closeImgPath: null,
-  $modal: null,
+  contentElement: null,
   extraClassName: null,
   fromDirection: 'bottom',
   fullscreen: false,
@@ -176,9 +182,9 @@ Modal.defaultProps = {
   transitionDuration: 250,
 }
 
-Modal.propTypes = {
+RawModal.propTypes = {
   closeImgPath: PropTypes.string,
-  $modal: PropTypes.node,
+  contentElement: PropTypes.node,
   dispatch: PropTypes.func.isRequired,
   extraClassName: PropTypes.string,
   fromDirection: PropTypes.string,
@@ -189,13 +195,16 @@ Modal.propTypes = {
   isUnclosable: PropTypes.bool,
   location: PropTypes.object.isRequired,
   maskColor: PropTypes.string,
+  name: PropTypes.string.isRequired,
   onCloseClick: PropTypes.func,
   transitionDuration: PropTypes.number
 }
 
-function mapStateTopProps (state) {
-  const { modal: { config, $modal, isActive } } = state
-  return Object.assign({ $modal, isActive }, config)
+function mapStateTopProps (state, ownProps) {
+  const { name } = ownProps
+  const { modals } = state
+  const { config, contentElement, isActive } = modals[name] || {}
+  return Object.assign({ contentElement, isActive }, config)
 }
 
 export const Modal = compose(
