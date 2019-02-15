@@ -55,6 +55,9 @@
   ],
   "main": "lib/index.js",
   "name": "redux-react-modals",
+  "peerDependencies": {
+    "styled-components": "^3.0.0 || ^4.0.0"
+  },
   "private": false,
   "scripts": {
     "compile": "rm -rf lib && babel --plugins transform-class-properties,transform-object-rest-spread --presets env,react -d lib/ src/",
@@ -65,5 +68,5 @@
     "watch": "nodemon --watch src --exec \"npm run compile\"",
     "test:unit": "yarn jest --env=jsdom ./src"
   },
-  "version": "0.0.6"
+  "version": "0.0.7"
 }
