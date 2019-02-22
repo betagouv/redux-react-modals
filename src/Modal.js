@@ -128,39 +128,45 @@ export class RawModal extends Component {
         className={classnames('modal', extraClassName, {
           active: display,
         })}
-        role="dialog"
+        role="button"
         style={{ backgroundColor: maskColor }}
         onClick={this.onCloseClick}
+        onKeyPress={this.onCloseClick}
+        tabIndex={0}
       >
-        <div
-          className={classnames('modal-dialog', {
-            fullscreen,
-          })}
-          onClick={e => this.stopPropagation(e)}
-          role="document"
-          style={{
-            transitionDuration: `${transitionDuration}ms`,
-            transform: this.transform(),
-          }}
-        >
-          {!isUnclosable &&
-            hasCloseButton &&
-            closeImgPath && (
-              <button
-                className="close"
-                onClick={this.onCloseClick}
-                type="button"
-              >
-                <img alt='modal close' src={closeImgPath} />
-              </button>
-            )}
-          {contentElement &&
-            contentElement.type && (
-              <div className="modal-content">
-                {contentElement}
-              </div>
-            )
-          }
+        <div className="container">
+          <div
+            className={classnames('modal-dialog', {
+              fullscreen,
+            })}
+            onClick={e => this.stopPropagation(e)}
+            onKeyPress={e => this.stopPropagation(e)}
+            role="button"
+            style={{
+              transform: this.transform(),
+              transitionDuration: `${transitionDuration}ms`,
+            }}
+            tabIndex={0}
+          >
+            {!isUnclosable &&
+              hasCloseButton &&
+              closeImgPath && (
+                <button
+                  className="close"
+                  onClick={this.onCloseClick}
+                  type="button"
+                >
+                  <img alt='modal close' src={closeImgPath} />
+                </button>
+              )}
+            {contentElement &&
+              contentElement.type && (
+                <div className="modal-content">
+                  {contentElement}
+                </div>
+              )
+            }
+          </div>
         </div>
       </div>
     )
