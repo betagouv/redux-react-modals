@@ -74,13 +74,13 @@ export class RawModal extends Component {
   }
 
   onCloseClick = event => {
-    const { dispatch, isActive, isUnclosable, onCloseClick } = this.props
+    const { dispatch, name, isActive, isUnclosable, onCloseClick } = this.props
 
     if (isUnclosable || !isActive) return true
     if (onCloseClick) {
       onCloseClick()
     }
-    dispatch(closeModal())
+    dispatch(closeModal(name))
     event.preventDefault()
     return event
   }
