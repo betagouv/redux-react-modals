@@ -1,8 +1,6 @@
 {
   "dependencies": {
     "classnames": "2.2.5",
-    "eslint": "^5.8.0",
-    "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
@@ -25,27 +23,15 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.22.0",
     "enzyme": "^3.6.0",
-    "enzyme-adapter-react-15": "^1.1.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
-    "eslint-plugin-flowtype": "^2.34.1",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.1.0",
-    "jest": "^23.4.2",
+    "jest": "^24.8.0",
     "nodemon": "^1.11.0",
-    "prettier": "1.12.1",
-    "prettier-eslint": "^8.8.2",
-    "prettier-stylelint": "^0.4.2",
-    "pretty-quick": "^1.6.0",
-    "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.5.1",
-    "stylelint": "^9.4.0",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^0.8.1",
-    "stylelint-scss": "^3.2.0"
+    "prettier-eslint": "^9.0.0"
   },
   "keywords": [
     "redux",
@@ -58,7 +44,7 @@
   "name": "redux-react-modals",
   "private": false,
   "scripts": {
-    "compile": "rm -rf lib && babel --plugins transform-class-properties,transform-object-rest-spread --presets env,react -d lib/ src/",
+    "compile": "rm -rf lib && babel --plugins transform-class-properties,transform-object-rest-spread --presets env,react -d lib/ --ignore tests src/",
     "postinstall": "if [ -d \"src/\" ]; then npm run compile; fi",
     "precommit": "./precommit.sh",
     "prettier": "$(yarn bin)/prettier --write 'src/**/*.js'",
