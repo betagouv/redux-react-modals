@@ -1,4 +1,14 @@
 {
+  "name": "redux-react-modals",
+  "description": "React lib displaying a layer of modals through redux actions",
+  "version": "1.1.0",
+  "private": false,
+  "main": "lib/index.js",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/betagouv/redux-react-modals"
+  },
   "dependencies": {
     "classnames": "2.2.5",
     "prop-types": "^15.7.2",
@@ -50,19 +60,14 @@
     "modal",
     "modals"
   ],
-  "license": "MPL-2.0",
-  "main": "lib/index.js",
-  "name": "redux-react-modals",
-  "private": false,
   "scripts": {
     "compile": "rm -rf lib && babel --plugins transform-class-properties,transform-object-rest-spread --presets env,react -d lib/ --ignore tests src/",
     "format:js": "prettier-eslint --write './**/*.{js,jsx}'",
-    "postinstall": "if [ -d \"src/\" ]; then yarn run compile; fi",
+    "postinstall": "if [ -d 'src/' ]; then yarn run compile; fi",
     "precommit": "./precommit.sh",
     "prettier": "$(yarn bin)/prettier --write 'src/**/*.js'",
     "prepublish": "yarn run compile",
     "test": "yarn jest --env=jsdom ./src",
-    "watch": "nodemon --watch src --exec \"yarn run compile\""
-  },
-  "version": "1.1.0"
+    "watch": "nodemon --watch src --exec 'yarn run compile'"
+  }
 }
