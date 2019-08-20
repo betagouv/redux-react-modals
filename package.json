@@ -1,11 +1,23 @@
 {
+  "name": "redux-react-modals",
+  "description": "React lib displaying a layer of modals through redux actions",
+  "version": "1.1.0",
+  "private": false,
+  "main": "lib/index.js",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/betagouv/redux-react-modals"
+  },
   "dependencies": {
-    "classnames": "2.2.5",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.3.1",
-    "redux": "^4.0.0"
+    "classnames": "2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.4",
+    "redux-saga": "^1.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
@@ -15,8 +27,8 @@
     "@babel/preset-react": "^7.0.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^7.0.0-0",
-    "babel-eslint": "^7.2.3",
-    "babel-jest": "^23.4.2",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.9.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
@@ -24,14 +36,15 @@
     "babel-preset-react": "^6.22.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-plugin-import": "^2.6.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.1.0",
-    "jest": "^24.8.0",
+    "eslint": "^6.2.1",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.7.1",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "jest": "^24.9.0",
+    "jest-environment-jsdom": "^24.5.0",
     "nodemon": "^1.11.0",
-    "prettier-eslint": "^9.0.0"
+    "prettier-eslint-cli": "^5.0.0"
   },
   "keywords": [
     "redux",
@@ -39,18 +52,14 @@
     "modal",
     "modals"
   ],
-  "license": "MPL-2.0",
-  "main": "lib/index.js",
-  "name": "redux-react-modals",
-  "private": false,
   "scripts": {
     "compile": "rm -rf lib && babel --plugins transform-class-properties,transform-object-rest-spread --presets env,react -d lib/ --ignore tests src/",
-    "postinstall": "if [ -d \"src/\" ]; then npm run compile; fi",
+    "format:js": "prettier-eslint --write './**/*.{js,jsx}'",
+    "postinstall": "if [ -d 'src/' ]; then yarn run compile; fi",
     "precommit": "./precommit.sh",
     "prettier": "$(yarn bin)/prettier --write 'src/**/*.js'",
-    "prepublish": "npm run compile",
+    "prepublish": "yarn run compile",
     "test": "yarn jest --env=jsdom ./src",
-    "watch": "nodemon --watch src --exec \"npm run compile\""
-  },
-  "version": "1.0.1"
+    "watch": "nodemon --watch src --exec 'yarn run compile'"
+  }
 }
