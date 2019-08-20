@@ -55,7 +55,7 @@
   "name": "redux-react-modals",
   "private": false,
   "scripts": {
-    "compile": "rm -rf lib && babel --plugins transform-class-properties,transform-object-rest-spread --presets env,react -d lib/ src/",
+    "compile": "rm -rf lib && babel --plugins transform-class-properties,transform-object-rest-spread --presets env,react -d lib/ --ignore tests src/",
     "format:js": "prettier-eslint --write './**/*.{js,jsx}'",
     "postinstall": "if [ -d \"src/\" ]; then yarn run compile; fi",
     "precommit": "./precommit.sh",
