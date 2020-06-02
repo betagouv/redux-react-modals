@@ -1,4 +1,4 @@
-import 'babel-polyfill'
+import '@babel/polyfill'
 
 import { shallow } from 'enzyme'
 import React from 'react'
